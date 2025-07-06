@@ -1,2 +1,2 @@
-APP_URL=lastfinalstoryapp.netlify.app
+APP_URL=laststoryapp.netlify.app
 MAP_SERVICE_API_KEY=<api_key>
