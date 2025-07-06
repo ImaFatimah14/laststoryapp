@@ -31,7 +31,7 @@ const HomeView = {
   },
 
   renderStories(container, stories, opts = {}) {
-    const { offline = false, onDelete } = opts;
+    const { offline = false, onDelete, onSave } = opts;
     stories.forEach((story) => {
       const card = document.createElement('article');
       card.classList.add('story-card');
@@ -45,6 +45,7 @@ const HomeView = {
           <p style="text-align: center; margin-bottom: 0.5rem;">${story.description}</p>
           <small style="color: #888;">${new Date(story.createdAt).toLocaleString()}</small>
           ${offline && onDelete ? '<button class="delete-story-btn" data-id="' + story.id + '" style="margin-top:0.75rem; background:#e74c3c; color:#fff; border:none; border-radius:6px; padding:0.4rem 1rem; cursor:pointer;">Hapus</button>' : ''}
+          ${!offline && onSave ? '<button class="save-story-btn" data-id="' + story.id + '" style="margin-top:0.75rem; background:#3498db; color:#fff; border:none; border-radius:6px; padding:0.4rem 1rem; cursor:pointer;">Simpan Story</button>' : ''}
         </div>
       `;
 
@@ -52,6 +53,12 @@ const HomeView = {
         card.querySelector('.delete-story-btn').onclick = (e) => {
           e.stopPropagation();
           onDelete(story.id);
+        };
+      }
+      if (!offline && onSave) {
+        card.querySelector('.save-story-btn').onclick = (e) => {
+          e.stopPropagation();
+          onSave(story);
         };
       }
 

@@ -120,7 +120,18 @@ const HomePresenter = {
       const renderContent = () => {
         if (!container) return;
         HomeView.clearLoading(container);
-        HomeView.renderStories(container, stories);
+        HomeView.renderStories(container, stories, {
+          onSave: async (story) => {
+            // Simpan story ke IndexedDB jika belum ada
+            const savedStories = await getAllStoriesIDB();
+            if (!savedStories.find(s => s.id === story.id)) {
+              await saveStoriesIDB([story]);
+              alert('Cerita berhasil disimpan!');
+            } else {
+              alert('Cerita sudah ada di daftar tersimpan.');
+            }
+          }
+        });
       };
       HomeView.runViewTransition(renderContent);
 

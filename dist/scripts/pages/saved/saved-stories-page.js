@@ -1,0 +1,1 @@
+import SavedStoriesView from"../../views/SavedStoriesView.js";const SavedStoriesPage={render:async()=>'\n      <section id="saved-stories-section">\n        <h2>Cerita Tersimpan</h2>\n        <div id="saved-stories-list"></div>\n      </section>\n    ',async afterRender(){await SavedStoriesView.init()}};export default SavedStoriesPage;

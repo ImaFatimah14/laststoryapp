@@ -3,6 +3,7 @@ import AboutPage from '../pages/about/about-page';
 import LoginPage from '../pages/login/login-page';
 import RegisterPage from '../pages/register/register-page';
 import AddStoryPage from '../pages/add/add-story-page';
+import SavedStoriesPage from '../pages/saved/saved-stories-page';
 
 const routes = {
   '/': {
@@ -23,6 +24,10 @@ const routes = {
   },
   '/register': {
     page: new RegisterPage(),
+    requiresAuth: false,
+  },
+  '/saved': {
+    page: SavedStoriesPage,
     requiresAuth: false,
   },
 };

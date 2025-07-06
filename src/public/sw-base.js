@@ -1,3 +1,16 @@
+// Web Push Notification: Event "push"
+self.addEventListener('push', (event) => {
+    console.log('Service worker pushing...');
+    async function chainPromise() {
+        const data = await event.data.json();
+        await self.registration.showNotification(data.title, {
+            body: data.options.body,
+            icon: data.options.icon,
+            badge: data.options.badge
+        });
+    }
+    event.waitUntil(chainPromise());
+});
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', () => self.clientsClaim());
 

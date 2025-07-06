@@ -12,7 +12,7 @@ class App {
     this.#drawerButton = drawerButton;
     this.#navigationDrawer = navigationDrawer;
 
-    this._insertSkipLink();
+    // this._insertSkipLink();
     this._setupDrawer();
     this._setupRouter();
 
@@ -22,14 +22,13 @@ class App {
     }
   }
 
-  _insertSkipLink() {
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.textContent = 'Skip to content';
-    skipLink.classList.add('skip-to-content');
-
-    document.body.insertBefore(skipLink, document.body.firstChild);
-  }
+  // _insertSkipLink() {
+  //   const skipLink = document.createElement('a');
+  //   skipLink.href = '#main-content';
+  //   skipLink.textContent = 'Skip to content';
+  //   skipLink.classList.add('skip-link');
+  //   document.body.insertBefore(skipLink, document.body.firstChild);
+  // }
 
   _setupDrawer() {
     this.#drawerButton.addEventListener('click', () => {
@@ -119,10 +118,12 @@ class App {
     const loginLink = document.querySelector('#loginLink');
     const logoutButton = document.querySelector('#logoutButton');
     const addStoryLink = document.querySelector('#addStoryLink');
+    const savedStoriesLink = document.querySelector('#savedStoriesLink');
 
     if (loginLink) loginLink.style.display = isLoggedIn ? 'none' : 'inline-block';
     if (addStoryLink) addStoryLink.style.display = isLoggedIn ? 'inline-block' : 'none';
     if (logoutButton) logoutButton.style.display = isLoggedIn ? 'inline-block' : 'none';
+    if (savedStoriesLink) savedStoriesLink.style.display = isLoggedIn ? 'inline-block' : 'none';
 
     if (logoutButton) {
       logoutButton.onclick = () => {
